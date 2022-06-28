@@ -15,6 +15,8 @@ public class Main {
         runAgain.bool = true;
 
         while(runAgain.bool) {
+            
+
             System.out.println("Hello User, lets add a book to the Library!");
             System.out.println("What is the name of the book you are adding? :");
             String titleInput = scanner.nextLine();
@@ -26,6 +28,9 @@ public class Main {
             System.out.println("Now all we need is the number of pages of this book, for good record keeping of course.");
             System.out.println("How many pages are in this book? :");
             int numPagesInput = scanner.nextInt();
+            scanner.nextLine();
+
+ 
 
             System.out.println("We will now proceed to compile your book submission!");
             Book bookCompiled = new Book(titleInput, genreInput, numPagesInput);
@@ -37,19 +42,19 @@ public class Main {
 
             library.addBookToLibrary(bookCompiled);
 
-            System.out.println(library);
 
             //  Run Again/Exit Process
             runAgainInstructions();
-            int userReply = scanner.nextInt();
+            String userReply = scanner.nextLine();
             runAgainFunc(userReply, runAgain);
+            
 
         }
         scanner.close();
     }
 
-    public static void runAgainFunc(int userChoice, RunAgainContainer runAgainBool) {
-        if (userChoice == 1) {
+    public static void runAgainFunc(String userChoice, RunAgainContainer runAgainBool) {
+        if (userChoice.equals("x")) {
             runAgainBool.bool = true;
         }
         else {
@@ -60,7 +65,7 @@ public class Main {
 
     public static void runAgainInstructions() {
         System.out.println("Would you like to add another book to the library?");
-        System.out.println("1. Create another book");
-        System.out.println("Any Other Number: Exit process");
+        System.out.println("Enter 'x' to create another book");
+        System.out.println("Any Other Letter: Exit process");
     }
 }
